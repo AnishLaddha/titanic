@@ -27,8 +27,8 @@ print(tabulate(df.describe(), headers="keys"))
 sdf = df[['Sex', 'Survived']].groupby(['Sex'], as_index=False).mean().sort_values(by='Sex', ascending=True)
 cdf = df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Pclass', ascending=True)
 scdf = df[['Sex','Pclass', 'Survived']].groupby(['Pclass','Sex'], as_index=False).mean().sort_values(by='Pclass', ascending=True)
-
-
+#pdf = df[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean().sort_values(by='Embarked', ascending=True)
+pdf = df[['Embarked','Sex', 'Pclass']].groupby(['Sex','Embarked'], as_index=False).mean().sort_values(by='Embarked', ascending=True)
 print("_"*40)
 print("Survival by Sex AND Class: ")
 
@@ -50,6 +50,15 @@ print("Survival by Class: ")
 line_printer(2)
 
 print(tabulate(cdf, headers="keys"))
+
+
+print("_"*40)
+print("Survival by Port")
+
+line_printer(2)
+
+print(tabulate(pdf, headers="keys"))
+
 # biglist =[]
 # for index, rows in scdf.iterrows():
 #     templist = []
